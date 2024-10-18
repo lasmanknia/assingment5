@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="w-full sticky top-0 z-10 bg-white">
+        <div class="w-full flex justify-between items-center px-3">
+            <button class="btn btn-success">Blog</button>
+            <div class="flex">
+                <div class="w-5"><img src="assets/logo.png" alt=""></div>
+                <p class="text-black font-bold">Donate Bangladesh</p>
+            </div>
+            <div class="text-black">
+                <span id="mainB">5500</span><span>BDT</span>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <button id="one" class="btn btn-sm btn-success m-4">Donation</button>
+            <button id="two" class="btn btn-sm btn-outline m-4">History</button>
+        </div>
+    </nav>
+    
+    <main id="oneDiv">
+        <div class="bg-green-400 w-full flex justify-center flex-wrap gap-3 py-5">
+
+            <div class="card card-side bg-white shadow-xl px-3 w-[80vw]">
+                <div class="badge badge-info absolute top-2 right-2">
+                    <img src="assets/coin.png" alt="">
+                    <span id="noakhaliTK">0</span><span>BTD</span>
+                </div>
+                <figure>
+                  <img src="assets/noakhali.png" alt="">
+                </figure>
+                <div class="card-body">
+                  <h2 class="text-black font-bold">Donate for Flood in Noakhlai</h2>
+                  <p>Noakhali is a coastal district located in the southeastern part of Bangladesh, known for its rich history, agricultural prosperity, and scenic beauty.</p>
+                  <div class="card-actions ">
+                    <input id="noakhali" type="text" class="input input-bordered w-full bg-white" placeholder="Enter Donation Amount">
+                    <button id="noakhaliD" class="btn btn-success w-full">Donate Now</button>
+                  </div>
+                </div>    
+              </div>
+
+              <div class="card card-side bg-white shadow-xl px-3 w-[80vw]">
+                <div class="badge badge-info absolute top-2 right-2">
+                    <img src="assets/coin.png" alt="">
+                    <span id="feniTK">0</span><span>BTD</span>
+                </div>
+                <figure>
+                  <img src="assets/feni.png" alt="">
+                </figure>
+                <div class="card-body">
+                  <h2 class="text-black font-bold">Donate for Flood in Noakhlai</h2>
+                  <p>The recent floods in Feni have devastated local communities, leading to severe disruption and loss. Your generous donation will help provide immediate aid, including food, clean water, and medical supplies, </p>
+                  <div class="card-actions ">
+                    <input id="feni" type="text" class="input input-bordered w-full bg-white" placeholder="Enter Donation Amount">
+                    <button id="feniD" class="btn btn-success w-full">Donate Now</button>
+                  </div>
+                </div>    
+              </div>
+
+              <div class="card card-side bg-white shadow-xl px-3 w-[80vw]">
+                <div class="badge badge-info absolute top-2 right-2">
+                    <img src="assets/coin.png" alt="">
+                    <span id="quotaTK">0</span><span>BTD</span>
+                </div>
+                <figure>
+                  <img src="assets/quota-protest.png" alt="">
+                </figure>
+                <div class="card-body">
+                  <h2 class="text-black font-bold">Donate for Quota</h2>
+                  <p>Noakhali is a coastal district located in the southeastern part of Bangladesh, known for its rich history, agricultural prosperity, and scenic beauty.</p>
+                  <div class="card-actions ">
+                    <input id="quota" type="text" class="input input-bordered w-full bg-white" placeholder="Enter Donation Amount">
+                    <button id="quotaD" class="btn btn-success w-full">Donate Now</button>
+                  </div>
+                </div>    
+              </div>
+
+
+        </div>
+    </main>
+
+    <div class="hidden" id="twoDiv">
+        <div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+
+const noakhliD = document.getElementById('noakhaliD');
+const feniD = document.getElementById('feniD');
+const quotaD = document.getElementById('quotaD');
+
+noakhliD.addEventListener('click',()=>{
+    let noakhali = document.getElementById('noakhali').value;
+    let noakhaliTK = document.getElementById('noakhaliTK').innerText;
+    noakhali = parseInt(noakhali);
+    noakhaliTK = parseInt(noakhaliTK);
+    noakhaliTK= noakhaliTK + noakhali;
+    document.getElementById("noakhaliTK").innerHTML=noakhaliTK;
+    mainTK(noakhali);
+    history(noakhali,"Noakhali")
+
+})
+feniD.addEventListener('click',()=>{
+    let feni = document.getElementById('feni').value;
+    let feniTK = document.getElementById('feniTK').innerText;
+    feni = parseInt(feni);
+    feniTK = parseInt(feniTK);
+    feniTK= feniTK + feni;
+    document.getElementById("feniTK").innerHTML=feniTK;
+    mainTK(feni);
+    history(feni,"Feni")
+
+})
+quotaD.addEventListener('click',()=>{
+    let quota = document.getElementById('quota').value;
+    let quotaTK = document.getElementById('quotaTK').innerText;
+    quota = parseInt(quota);
+    quotaTK = parseInt(quotaTK);
+    quotaTK= quotaTK + quota;
+    document.getElementById("quotaTK").innerHTML=quotaTK;
+    mainTK(quota);
+    history(quota,"Quota")
+
+})
+
+function mainTK(TK){
+    let mainB = document.getElementById("mainB").innerText;
+    mainB = parseInt(mainB)+TK;
+    document.getElementById('mainB').innerHTML=mainB;
+}
+    const buttonDonation = document.getElementById('one');
+    const buttonHistory = document.getElementById('two');
+
+    buttonHistory.addEventListener('click',()=>{
+        const one = document.getElementById('oneDiv');
+        const two = document.getElementById('twoDiv');
+
+        one.style.display = 'none';
+        two.style.display = 'block';
+        one.classList.remove('btn-success')
+        two.classList.add('btn-success')
+
+    })
+
+    buttonDonation.addEventListener('click',()=>{
+        const one = document.getElementById('oneDiv');
+        const two = document.getElementById('twoDiv');
+
+        one.style.display = 'block';
+        two.style.display = 'none';
+        two.classList.remove('btn-success')
+        one.classList.add('btn-success')
+
+    })
+
+    function history(TK,name){
+        let date = new Date();
+        let div = document.createElement('div');
+        div.innerHTML = `<h1>${TK} is Donated for ${name}<br>on ${date}`;
+        const parent = document.getElementById('twoDiv');
+        parent.appendChild(div);
+    }
+
+    </script>
+</body>
+</html>
